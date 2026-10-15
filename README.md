@@ -43,14 +43,22 @@ python3 -m venv venv
 pip install -r requirements.txt
 ```
 
-<!-- ## 💻 Usage
+## 💻 Usage
+
+Edit the main.py file by adding
+
+```python
+specificWood = Wood(woodName, elasticity, tensileStrength, compressiveStrength)
+
+specificPlank = Plank(woodType, width, depth) #in meters
+```
 
 Always run the application from the project root directory using the module flag:
 
 ```bash
 python -m src.main
 ```
--->
+
 
 ## 📄 License
 
