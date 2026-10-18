@@ -1,0 +1,26 @@
+Design:
+
+src |
+  main
+    Inputs:
+      - Resources | Variable in main, as an array
+      - Wood Types | COMPLETE 
+      - Amounts of each Wood | variable in main
+      - Joint Type
+    Output:
+      - Joint specifications, and arrangement
+  
+  File Method for Storing Wood Values | Not Done
+
+  Some file which describes joints -> It gives a description of joint types | Not Finished
+    
+  Design Decision:
+    I am going to build a prebuilt, and I shall build a way to add, edit and delete the dictionary, by having some write ability to files
+    Firstly use prebuilt, it's easier
+
+    I'll do this use dictionary
+
+
+
+
+
