@@ -12,14 +12,18 @@ def maxCompressiveForce(woodPlank):
 
   area = woodPlank.get(width) * woodPlank.get(depth) #primitive incorrect equation
   
-  maxCompressiveForce = sigmaT*area
+  maxCompressiveForce = sigmaC*area
   return maxCompressiveForce
 
 
-def criticalBucklingLoad(
-    elasticity, length):
+def criticalBucklingLoad(elasticity, length, width, depth):
   k = 0.5
   e = elasticity
-  i = 
+  x = (width, depth)
+  minDim = min(x)
+  maxDim = max(x)
+  inertia = (minDim**3)*maxDim/12
+  criticalLoad = ((math.pi ** 2) * elasticity * inertia )/ ((k*length)**2)
+  return criticalLoad
 
 
