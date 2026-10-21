@@ -6,5 +6,5 @@ class BridgeStructure:
   def addNode(self, nodeID: int, x: int, y: int):
     self.nodes[nodeID] = Node(nodeID, (x, y))
 
-  def addPlank(self, plankID, sizedPlank):
+  def addPlank(self, sizedPlank):
     self.planks.append(sizedPlank)
