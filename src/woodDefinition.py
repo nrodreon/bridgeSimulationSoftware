@@ -1,3 +1,6 @@
+from math import sqrt
+
+
 class WoodType:
   # Types name - String, area - (int, int), unspecifedProperty(int)
   def __init__(
@@ -28,9 +31,17 @@ class Plank:
 
 class SizedPlank:
   # functionally a subtype of Plank
-  def __init__(self, plank: Plank, length: float):
+  def __init__(self, plank: Plank, node1, node2):
     self.plank = plank
-    self.length = length
+    self.startNode = node1
+    self.endNode = node2
+  @property
+  def length(self):
+    deltaY = self.startNode.y - self.endNode.y
+    deltaX = self.startNode.x - self.endNode.x
+    length = sqrt(deltaX**2 + deltaY**2)
+    return length
+
 
   def __getattr__(self, name):
     return getattr(self.plank, name)
