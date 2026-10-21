@@ -1,22 +1,36 @@
-class Wood:
+class WoodType:
   # Types name - String, area - (int, int), unspecifedProperty(int)
-  def __init__(self, name,elasticity, tensileStrength, compressiveStrength):
+  def __init__(
+    self, 
+    name: str,
+    elasticity: float,
+    tensileStrength: float,
+    compressiveStrength: float
+  ):
     self.name = name
-    self.elasticity
-    E = elasticity
-    sigma_t = tensileStrength
+    self.elasticity = elasticity
     self.tensileStrength = tensileStrength
-    sigma_t = tensileStrength
     self.compressiveStrength = compressiveStrength
-    sigma_c = compressiveStrength
-    
-    def get(self, property):
-      return getattr(self, property)
-    
-class Plank(Wood):
-  def __init__(self, woodType, width, depth):
-    super().__init__(woodType.name, woodType.elasticity, woodType.tensileStrength, woodType.compressiveStrength)
+  
+class Plank:
+  # functionally subtype of WoodType
+  def __init__(self, woodType: WoodType, width: float, depth: float):
+    self.woodType = woodType
     self.width = width
     self.depth = depth
+  
+  @property
+  def area(self):
+    return self.width * self.depth
 
-  pass
+  def __getattr__(self, name):
+    return getattr(self.woodType, name)
+
+class SizedPlank:
+  # functionally a subtype of Plank
+  def __init__(self, plank: Plank, length: float):
+    self.plank = plank
+    self.length = length
+
+  def __getattr__(self, name):
+    return getattr(self.plank, name)
