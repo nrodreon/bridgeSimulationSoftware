@@ -1,29 +1,30 @@
 import math
-
-def maxTensileForce(woodPlank):
-  sigmaT = woodPlank.get(tensileStrength)
-  area = woodPlank.get(width) * woodPlank.get(depth)
+#all functions support subTypes of indicated type
+def maxTensileForce(plank: Plank):
+  sigmaT = plank.tensileStrength
+  area = plank.area
   maxTensileForce = sigmaT*area
   return maxTensileForce
 
-def maxCompressiveForce(woodPlank):
-  
-  sigmaC = woodPlank.get(compressiveStrength)
 
-  area = woodPlank.get(width) * woodPlank.get(depth) #primitive incorrect equation
-  
-  maxCompressiveForce = sigmaC*area
+def maxCompressiveForce(plank: Plank):
+  sigmaC = plank.compressiveStrength
+  area = plank.area
+  maxCompressiveForce = sigmaC * area
   return maxCompressiveForce
 
 
-def criticalBucklingLoad(elasticity, length, width, depth):
+def criticalBucklingLoad(sizedPlank: SizedPlank):
   k = 0.5
-  e = elasticity
-  x = (width, depth)
-  minDim = min(x)
-  maxDim = max(x)
+  e = sizedPlank.elasticity
+  width = sizedPlank.width
+  depth = sizedPlank.depth
+  minDim = min(width, depth)
+  maxDim = max(width, depth)
+  length = sizedPlank.length
   inertia = (minDim**3)*maxDim/12
-  criticalLoad = ((math.pi ** 2) * elasticity * inertia )/ ((k*length)**2)
+
+  criticalLoad = ((math.pi ** 2) * e * inertia )/ ((k*length)**2)
   return criticalLoad
 
 
